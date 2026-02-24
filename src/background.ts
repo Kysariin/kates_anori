@@ -62,10 +62,12 @@ browser.runtime.onInstalled.addListener(async (details) => {
   }
 
   if (details.reason === "install") {
+    /*
     browser.tabs.create({
       url: "https://anori.app/welcome",
       active: true,
     });
+    */
     const acceptedLanguages = await browser.i18n.getAcceptLanguages();
     const userLocale = browser.i18n.getUILanguage().replace("_", "-");
     const possibleLanguages = [userLocale, ...acceptedLanguages].map((l) => l.toLowerCase());
@@ -174,7 +176,7 @@ browser.alarms.create("sendAnalytics", {
   periodInMinutes: 60,
 });
 
-browser.runtime.setUninstallURL(`https://anori.app/goodbye`);
+// browser.runtime.setUninstallURL(`https://anori.app/goodbye`);
 
 (X_BROWSER === "chrome" ? browser.action : browser.browserAction).onClicked.addListener(() => {
   browser.tabs.create({

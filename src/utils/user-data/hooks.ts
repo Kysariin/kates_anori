@@ -116,7 +116,7 @@ export const useFolderWidgets = (folder: Folder) => {
   const [details, setDetails] = useStorageValue(anoriSchema.folderDetails.folder.byId(folder.id));
   const currentDetails = details ?? { widgets: [] };
 
-  const addWidget = async <WD extends WidgetDescriptor[], W extends WD[number]>({
+const addWidget = async <WD extends WidgetDescriptor[], W extends WD[number]>({
     plugin,
     widget,
     config,
@@ -140,10 +140,12 @@ export const useFolderWidgets = (folder: Folder) => {
       ...position,
     };
 
+    // FIX: Added (p?.widgets || []) to prevent 'undefined' crash
     await setDetails((p) => ({
       ...p,
-      widgets: [...p.widgets, data],
+      widgets: [...(p?.widgets || []), data],
     }));
+    
     trackEvent("Widget added", {
       "Folder": folder.id === "home" ? "home" : "other",
       "Plugin ID": plugin.id,
@@ -163,9 +165,10 @@ export const useFolderWidgets = (folder: Folder) => {
         "Widget ID": removedWidget.widgetId,
       });
     }
+    // FIX: Added (p?.widgets || [])
     await setDetails((p) => ({
       ...p,
-      widgets: p.widgets.filter((w) => w.instanceId !== id),
+      widgets: (p?.widgets || []).filter((w) => w.instanceId !== id),
     }));
   };
 
@@ -179,9 +182,10 @@ export const useFolderWidgets = (folder: Folder) => {
         "Widget ID": movedWidget.widgetId,
       });
     }
+    // FIX: Added (p?.widgets || [])
     await setDetails((p) => ({
       ...p,
-      widgets: p.widgets.map((w) => {
+      widgets: (p?.widgets || []).map((w) => {
         if (w.instanceId === id) {
           return {
             ...w,

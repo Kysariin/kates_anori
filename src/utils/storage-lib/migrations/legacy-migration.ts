@@ -99,7 +99,7 @@ export async function migrateFromLegacy(): Promise<void> {
 
   // Core data
   newData.folders = wrapValue(allData.folders ?? [], hlc.tick());
-  newData.newTabTitle = wrapValue(allData.newTabTitle ?? "Anori", hlc.tick());
+  newData.newTabTitle = wrapValue(allData.newTabTitle ?? "Kate's Anori", hlc.tick());
 
   // Appearance
   newData.theme = wrapValue(allData.theme ?? "Greenery", hlc.tick());

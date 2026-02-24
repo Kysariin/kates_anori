@@ -109,7 +109,7 @@ export const schemaV1 = defineSchemaVersion(1, {
   newTabTitle: cell({
     key: "newTabTitle",
     schema: z.string(),
-    defaultValue: "Anori",
+    defaultValue: "Kate's Extension",
     tracked: true,
   }),
 

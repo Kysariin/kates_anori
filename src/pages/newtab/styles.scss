@@ -35,20 +35,11 @@ body {
     width: 100vw;
     width: 100dvw;
     z-index: 0;
-    // background-color: hsla(var(--text-hsl) / 0.35);
 
     &::before {
-        content: "";
-        pointer-events: none;
-        position: fixed;
-        width: 100vw;
-        width: 100dvw;
-        height: 100vh;
-        height: 100dvh;
-        top: 0;
-        left: 0;
-        background-image: radial-gradient(hsla(var(--text-hsl) / 0.2), hsla(var(--text-hsl) / 0.2) 1px, rgba(0, 0, 0, 0) 1px, rgba(0, 0, 0, 0) 100%);
-        background-size: 30px 30px;
+        // NUCLEAR OPTION FOR DOTTED LINES
+        content: none !important;
+        display: none !important;
     }
 }
 
@@ -66,7 +57,6 @@ body {
     }
 
     &.horizontal-sidebar {
-
         .start-page-content {
             flex-direction: column-reverse;
         }
@@ -76,7 +66,6 @@ body {
 
             .sidebar {
                 .sidebar-viewport {
-
                     &>div[style]:not(#specifity-bump) { 
                         flex-direction: column;
                     }
@@ -86,7 +75,6 @@ body {
                     }
                 }
             }
-
         }
 
         .widgets-area {
@@ -114,27 +102,25 @@ body {
         height: calc(0.9rem * 1.2 + 1.55rem);
     }
 
-   
-
     .widgets-area {
         position: relative;
         margin: 2rem;
         margin-inline-start: 0;
         flex: 1;
         border-radius: 36px;
-        background: hsla(var(--text-hsl) / 0.04);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        
+        // NUCLEAR OPTION FOR DEBLUR
+        background: hsla(var(--text-hsl) / 0.04) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        
         z-index: 1;
         overflow: hidden;
-
         display: flex;
         flex-direction: column;
         min-width: 0;
     }
-
 }
-
 
 .loading-cover {
     position: fixed;
@@ -154,13 +140,7 @@ body {
     }
 }
 
-
 @keyframes loading-keyframes {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(100%);
-    }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(100%); }
 }

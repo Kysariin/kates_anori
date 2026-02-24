@@ -67,8 +67,7 @@ export const RequirePermissions = ({
   }
   return (
     <>
-      <button
-        type="button"
+      <div
         className={clsx("RequirePermissions", compact && "compact", className)}
         onClick={() => (compact ? setModalVisible(true) : null)}
       >
@@ -93,7 +92,7 @@ export const RequirePermissions = ({
             </Button>
           </>
         )}
-      </button>
+      </div>
       <AnimatePresence>
         {modalVisible && (
           <Modal
